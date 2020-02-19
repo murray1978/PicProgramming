@@ -1,0 +1,65 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F819 ]
+[d frameptr 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"23 C:\Users\murray\MPLABXProjects\AClone.X\newmain.c
+[v _main main `(i  1 e 2 0 ]
+"37
+[v _setup setup `(v  1 e 1 0 ]
+"41
+[v _loop loop `(v  1 e 1 0 ]
+"52
+[v _adc_init adc_init `(v  1 e 1 0 ]
+"68
+[v _init_pwm init_pwm `(v  1 e 1 0 ]
+"9 C:\Users\murray\MPLABXProjects\AClone.X\serial.c
+[v _serial_init serial_init `(v  1 e 1 0 ]
+"166 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f819.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"761
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"768
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+"934
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1448
+[v _ADRESL ADRESL `VEuc  1 e 1 @158 ]
+"1455
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
+"1702
+[v _GO_DONE GO_DONE `VEb  1 e 0 @250 ]
+"23 C:\Users\murray\MPLABXProjects\AClone.X\newmain.c
+[v _main main `(i  1 e 2 0 ]
+{
+"35
+} 0
+"37
+[v _setup setup `(v  1 e 1 0 ]
+{
+"39
+} 0
+"9 C:\Users\murray\MPLABXProjects\AClone.X\serial.c
+[v _serial_init serial_init `(v  1 e 1 0 ]
+{
+[v serial_init@baud baud `i  1 p 2 0 ]
+"25
+} 0
+"41 C:\Users\murray\MPLABXProjects\AClone.X\newmain.c
+[v _loop loop `(v  1 e 1 0 ]
+{
+"44
+} 0
+"52
+[v _adc_init adc_init `(v  1 e 1 0 ]
+{
+"58
+} 0

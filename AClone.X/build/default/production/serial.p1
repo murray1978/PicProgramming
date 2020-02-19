@@ -1,0 +1,66 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"9 serial.c
+[; ;serial.c: 9: void serial_init(int baud)
+[v _serial_init `(v ~T0 @X0 1 ef1`i ]
+"10
+[; ;serial.c: 10: {
+{
+[e :U _serial_init ]
+"9
+[; ;serial.c: 9: void serial_init(int baud)
+[v _baud `i ~T0 @X0 1 r1 ]
+"10
+[; ;serial.c: 10: {
+[f ]
+"11
+[; ;serial.c: 11:     int error = 0;
+[v _error `i ~T0 @X0 1 a ]
+[e = _error -> 0 `i ]
+"13
+[; ;serial.c: 13:     if(baud == 0)
+[e $ ! == _baud -> 0 `i 2  ]
+"14
+[; ;serial.c: 14:     {
+{
+"15
+[; ;serial.c: 15:         error = 0;
+[e = _error -> 0 `i ]
+"16
+[; ;serial.c: 16:     }
+}
+[e $U 3  ]
+"17
+[; ;serial.c: 17:     else if(baud == 1)
+[e :U 2 ]
+[e $ ! == _baud -> 1 `i 4  ]
+"18
+[; ;serial.c: 18:     {
+{
+"19
+[; ;serial.c: 19:         error = 0;
+[e = _error -> 0 `i ]
+"20
+[; ;serial.c: 20:     }
+}
+[e :U 4 ]
+[e :U 3 ]
+"21
+[; ;serial.c: 21:     if(error > 0)
+[e $ ! > _error -> 0 `i 5  ]
+"22
+[; ;serial.c: 22:     {
+{
+"23
+[; ;serial.c: 23:         while(1);
+[e :U 7 ]
+[e :U 6 ]
+[e $U 7  ]
+[e :U 8 ]
+"24
+[; ;serial.c: 24:     }
+}
+[e :U 5 ]
+"25
+[; ;serial.c: 25: }
+[e :UE 1 ]
+}
