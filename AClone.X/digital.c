@@ -6,10 +6,11 @@
  */
 
 #include "digital.h"
+#include <xc.h>
 
     int digitalRead(int _bit)
     {
-        
+        return 0;
     }
     
     void digitalWrite(int _bit)

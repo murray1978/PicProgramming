@@ -30,6 +30,7 @@ extern "C" {
 #pragma config CCPMX = RB2      // CCP1 Pin Selection bit (CCP1 function on RB2)
 #pragma config CP = OFF         // Flash Program Memory Code Protection bit (Code protection off)
 
+ 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 

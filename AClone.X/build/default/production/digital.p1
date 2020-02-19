@@ -131,68 +131,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1595
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic16f819.h: 1595: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"10 serial.c
-[; ;serial.c: 10: void serial_init(int baud)
-[v _serial_init `(v ~T0 @X0 1 ef1`i ]
-"11
-[; ;serial.c: 11: {
-{
-[e :U _serial_init ]
-"10
-[; ;serial.c: 10: void serial_init(int baud)
-[v _baud `i ~T0 @X0 1 r1 ]
-"11
-[; ;serial.c: 11: {
-[f ]
+"11 digital.c
+[; ;digital.c: 11:     int digitalRead(int _bit)
+[v _digitalRead `(i ~T0 @X0 1 ef1`i ]
 "12
-[; ;serial.c: 12:     int error = 0;
-[v _error `i ~T0 @X0 1 a ]
-[e = _error -> 0 `i ]
+[; ;digital.c: 12:     {
+{
+[e :U _digitalRead ]
+"11
+[; ;digital.c: 11:     int digitalRead(int _bit)
+[v __bit `i ~T0 @X0 1 r1 ]
+"12
+[; ;digital.c: 12:     {
+[f ]
+"13
+[; ;digital.c: 13:         return 0;
+[e ) -> 0 `i ]
+[e $UE 68  ]
 "14
-[; ;serial.c: 14:     if(baud == 0)
-[e $ ! == _baud -> 0 `i 69  ]
-"15
-[; ;serial.c: 15:     {
-{
-"16
-[; ;serial.c: 16:         error = 0;
-[e = _error -> 0 `i ]
-"17
-[; ;serial.c: 17:     }
-}
-[e $U 70  ]
-"18
-[; ;serial.c: 18:     else if(baud == 1)
-[e :U 69 ]
-[e $ ! == _baud -> 1 `i 71  ]
-"19
-[; ;serial.c: 19:     {
-{
-"20
-[; ;serial.c: 20:         error = 0;
-[e = _error -> 0 `i ]
-"21
-[; ;serial.c: 21:     }
-}
-[e :U 71 ]
-[e :U 70 ]
-"22
-[; ;serial.c: 22:     if(error > 0)
-[e $ ! > _error -> 0 `i 72  ]
-"23
-[; ;serial.c: 23:     {
-{
-"24
-[; ;serial.c: 24:         while(1);
-[e :U 74 ]
-[e :U 73 ]
-[e $U 74  ]
-[e :U 75 ]
-"25
-[; ;serial.c: 25:     }
-}
-[e :U 72 ]
-"26
-[; ;serial.c: 26: }
+[; ;digital.c: 14:     }
 [e :UE 68 ]
+}
+"16
+[; ;digital.c: 16:     void digitalWrite(int _bit)
+[v _digitalWrite `(v ~T0 @X0 1 ef1`i ]
+"17
+[; ;digital.c: 17:     {
+{
+[e :U _digitalWrite ]
+"16
+[; ;digital.c: 16:     void digitalWrite(int _bit)
+[v __bit `i ~T0 @X0 1 r1 ]
+"17
+[; ;digital.c: 17:     {
+[f ]
+"19
+[; ;digital.c: 19:     }
+[e :UE 69 ]
 }

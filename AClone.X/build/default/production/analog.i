@@ -1,4 +1,4 @@
-# 1 "serial.c"
+# 1 "analog.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,17 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "serial.c" 2
+# 1 "analog.c" 2
 
 
 
 
 
 
-# 1 "./serial.h" 1
-# 21 "./serial.h"
-    void serial_init( int);
-# 7 "serial.c" 2
+
+# 1 "./analog.h" 1
+# 17 "./analog.h"
+void adc_init(void);
+int analogRead( int );
+void analogWrite( int, int );
+# 8 "analog.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
@@ -1184,23 +1187,43 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 8 "serial.c" 2
+# 9 "analog.c" 2
 
 
-void serial_init(int baud)
+int pwm_running = 0;
+void init_pwm( int port )
 {
-    int error = 0;
 
-    if(baud == 0)
+    TRISB = 0b00000000;
+    PR2 = 0x00;
+    CCPR1L = 0x00;
+    CCP1CON = 0b00001100;
+}
+
+
+void analogWrite( int port, int value )
+{
+    if(!pwm_running)
     {
-        error = 0;
+        init_pwm(port);
     }
-    else if(baud == 1)
-    {
-        error = 0;
-    }
-    if(error > 0)
-    {
-        while(1);
-    }
+    PR2 = 0xFF / 2;
+    CCPR1L = value;
+    CCP1CON = 0b00001100;
+}
+
+
+void adc_init( void )
+{
+    PORTA = 0;
+    TRISA = 0b11111111;
+    ADCON0 = 0b00000000;
+    ADCON1 = 0b10000000;
+}
+
+int analogRead( int port )
+{
+    ADCON0 = (port << 3) + 0x01;
+    while( GO_DONE );
+    return ADRESH + ADRESL;
 }

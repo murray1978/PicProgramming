@@ -211,23 +211,8 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 extern char * ftoa(float f, int * status);
 # 9 "newmain.c" 2
 
-# 1 "./config.h" 1
-# 22 "./config.h"
-#pragma config FOSC = INTOSCIO
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = ON
-#pragma config BOREN = OFF
-#pragma config LVP = ON
-#pragma config CPD = OFF
-#pragma config WRT = OFF
-#pragma config CCPMX = RB2
-#pragma config CP = OFF
-
-
-
-
-
+# 1 "./main.h" 1
+# 14 "./main.h"
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -1389,28 +1374,94 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 36 "./config.h" 2
-# 10 "newmain.c" 2
-
-# 1 "./serial.h" 1
-# 21 "./serial.h"
-    void serial_init( int);
-# 11 "newmain.c" 2
+# 14 "./main.h" 2
 
 
+
+
+
+
+
+
+    void delay( int millis)
+    {
+        int _delay = millis / 4;
+
+
+
+
+
+        OPTION_REG = 0b00010100;
+        TMR0 = 223;
+        TMR0IE = 0;
+
+        for(int i = 0; i < _delay; i ++)
+        {
+            while(!TMR0IF);
+            TMR0IE = 0;
+
+        }
+    }
+
+long map( long x, long in_min, long in_max, long out_min, long out_max)
+{
+    return ( x - in_min) * (out_max - out_min + 1) / (in_max - in_min - 1) + out_min;
+}
+
+void __attribute__((picinterrupt(("")))) intCmd()
+{
+
+}
 
 void setup( void );
 
 void loop( void );
+# 10 "newmain.c" 2
 
+# 1 "./config.h" 1
+# 22 "./config.h"
+#pragma config FOSC = INTOSCIO
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = ON
+#pragma config BOREN = OFF
+#pragma config LVP = ON
+#pragma config CPD = OFF
+#pragma config WRT = OFF
+#pragma config CCPMX = RB2
+#pragma config CP = OFF
+# 11 "newmain.c" 2
+
+# 1 "./serial.h" 1
+# 21 "./serial.h"
+    void serial_init( int);
+# 12 "newmain.c" 2
+
+# 1 "./analog.h" 1
+# 17 "./analog.h"
 void adc_init(void);
+int analogRead( int );
+void analogWrite( int, int );
+# 13 "newmain.c" 2
+
+# 1 "./digital.h" 1
+# 15 "./digital.h"
+    int digitalRead(int _bit);
+    void digitalWrite(int _bit);
+# 14 "newmain.c" 2
+
+
+
+
 
 
 
 
 int main(int argc, char** argv) {
-    adc_init();
-    serial_init(0);
+    OSCCON = 01100000;
+
+
+
 
     setup();
 
@@ -1424,44 +1475,25 @@ int main(int argc, char** argv) {
 
 void setup( void )
 {
+    TRISB = 0;
+    PORTB = 255;
 }
+
+
+
 
 void loop( void )
 {
-
-}
-
-
-
+# 62 "newmain.c"
+    PORTB = 0;
+    delay(500);
 
 
 
 
-void adc_init( void )
-{
-    PORTA = 0;
-    TRISA = 0b11111111;
-    ADCON0 = 0b00000000;
-    ADCON1 = 0b10000000;
-}
 
-int analog_read( int port )
-{
-    ADCON0 = (port << 3) + 0x01;
-    while( GO_DONE );
-    return ADRESH + ADRESL;
-}
 
-int pwm_running = 0;
-void init_pwm( int port )
-{
+    PORTB = 255;
+    delay(500);
 
-}
-
-void analog_write( int port )
-{
-    if(!pwm_running)
-    {
-        init_pwm(port);
-    }
 }

@@ -1,4 +1,4 @@
-# 1 "serial.c"
+# 1 "digital.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,17 +6,19 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "serial.c" 2
+# 1 "digital.c" 2
 
 
 
 
 
 
-# 1 "./serial.h" 1
-# 21 "./serial.h"
-    void serial_init( int);
-# 7 "serial.c" 2
+
+# 1 "./digital.h" 1
+# 15 "./digital.h"
+    int digitalRead(int _bit);
+    void digitalWrite(int _bit);
+# 8 "digital.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
@@ -1184,23 +1186,15 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 8 "serial.c" 2
+# 9 "digital.c" 2
 
 
-void serial_init(int baud)
-{
-    int error = 0;
+    int digitalRead(int _bit)
+    {
+        return 0;
+    }
 
-    if(baud == 0)
+    void digitalWrite(int _bit)
     {
-        error = 0;
+
     }
-    else if(baud == 1)
-    {
-        error = 0;
-    }
-    if(error > 0)
-    {
-        while(1);
-    }
-}

@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
     int digitalRead(int _bit);
-    void digitalWrite(int _bit)
+    void digitalWrite(int _bit);
 
 #ifdef	__cplusplus
 }

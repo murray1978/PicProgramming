@@ -5,6 +5,7 @@
  * Created on 14 February 2020, 1:19 PM
  */
 #include "serial.h"
+#include <xc.h>
 
 void serial_init(int baud)
 {
