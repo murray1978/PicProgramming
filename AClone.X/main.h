@@ -18,6 +18,20 @@ extern "C" {
 #define HIGH    1
 
 
+long map( long x, long in_min, long in_max, long out_min, long out_max)
+{
+    return ( x - in_min) * (out_max - out_min + 1) / (in_max - in_min - 1) + out_min;
+}
+
+void __interrupt() intCmd()
+{
+    //if(1){}
+}
+//STD arduino setup code
+void setup( void );
+//STD arduino loop code
+void loop( void );
+
 
 #ifdef	__cplusplus
 }

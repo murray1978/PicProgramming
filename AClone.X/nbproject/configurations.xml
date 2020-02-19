@@ -7,6 +7,8 @@
       <itemPath>config.h</itemPath>
       <itemPath>main.h</itemPath>
       <itemPath>serial.h</itemPath>
+      <itemPath>analog.h</itemPath>
+      <itemPath>digital.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,6 +19,8 @@
                    projectFiles="true">
       <itemPath>newmain.c</itemPath>
       <itemPath>serial.c</itemPath>
+      <itemPath>analog.c</itemPath>
+      <itemPath>digital.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
